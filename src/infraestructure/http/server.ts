@@ -5,5 +5,5 @@ import cors from "cors";
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/todos", todoRouter);
+app.use("/api/todos", todoRouter);
 export default app;
