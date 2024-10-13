@@ -14,4 +14,10 @@ export const AppDataSource: DataSource = new DataSource({
   entities: [Todo],
   synchronize: true,
   logging: true,
+  ssl: true, // Habilitar SSL
+  extra: {
+    ssl: {
+      rejectUnauthorized: false, // Aceptar certificados no verificados
+    },
+  },
 });
