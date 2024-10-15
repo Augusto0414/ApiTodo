@@ -32,9 +32,12 @@ export class TodoController {
   async update(req: Request, res: Response) {
     const id = req.params.id;
     const todo = await this.todoService.getTodoById(id);
+
     if (todo) {
-      todo.title = req.body.title;
-      todo.description = req.body.description;
+      const { title, description, status } = req.body;
+      todo.title = title || todo.title;
+      todo.description = description || todo.description;
+      todo.status = status || todo.status;
       const updatedTodo = await this.todoService.updateTodo(todo);
       res.json(updatedTodo);
     } else {
